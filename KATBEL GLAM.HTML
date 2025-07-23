@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glamour Beauty - Maquillaje Profesional en Guatemala</title>
+    <style>
+        :root {
+            --primary-color: #d63384;
+            --secondary-color: #f8bbd0;
+            --dark-color: #333;
+            --light-color: #f8f9fa;
+            --success-color: #28a745;
+            --warning-color: #ffc107;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        .cart-icon {
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--warning-color);
+            color: var(--dark-color);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn:hover {
+            background-color: #c22575;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 3rem 0;
+            font-size: 2rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 0.5rem auto;
+            border-radius: 2px;
+        }
+        
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.6rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .product-brand {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+        
+        .product-price span {
+            font-size: 0.9rem;
+            color: #666;
+            text-decoration: line-through;
+            margin-left: 0.5rem;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 0.7rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #c22575;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .feature p {
+            color: #666;
+        }
+        
+        .newsletter {
+            background-color: var(--secondary-color);
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--dark-color);
+            margin: 4rem 0;
+        }
+        
+        .newsletter h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--dark-color);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            padding: 0 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #c22575;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.7rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Modal del carrito */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+        }
+        
+        .cart-modal.active {
+            display: block;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-header h3 {
+            font-size: 1.3rem;
+            color: var(--dark-color);
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .cart-items {
+            padding: 1.5rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 1rem;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--dark-color);
+        }
+        
+        .cart-item-price {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            background-color: #f0f0f0;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .quantity {
+            margin: 0 0.7rem;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: #ff4d4d;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .cart-summary {
+            padding: 1.5rem;
+            border-top: 1px solid #eee;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            background-color: #c22575;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 3rem 0;
+            color: #666;
+        }
+        
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+        
+        .overlay.active {
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.7rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+                padding: 0.8rem;
+            }
+            
+            .cart-modal {
+                width: 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">KATBEL GLAM</div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                    <li>
+                        <a href="#" id="open-cart" class="cart-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Modal del Carrito -->
+    <div class="overlay" id="overlay"></div>
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header">
+            <h3>Tu Carrito</h3>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Los items del carrito se agregarán aquí dinámicamente -->
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                <p>Tu carrito está vacío</p>
+            </div>
+        </div>
+        <div class="cart-summary" id="cart-summary" style="display: none;">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cart-total">Q0.00</span>
+            </div>
+            <button class="checkout-btn">Proceder al Pago</button>
+        </div>
+    </div>
+
+    <section class="hero" id="inicio">
+        <div class="hero-content container">
+            <h1>Maquillaje Profesional</h1>
+            <p>Descubre los mejores productos de maquillaje con calidad profesional a precios accesibles en quetzales.</p>
+            <a href="#productos" class="btn">Explorar Productos</a>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title" id="productos">Productos Destacados</h2>
+        <div class="products">
+            <!-- Producto 1 -->
+            <div class="product-card">
+                <div class="product-badge">Nuevo</div>
+                <div class="product-image">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="Base de maquillaje HD">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Base Líquida Matte</h3>
+                    <p class="product-brand">Maybelline - Fit Me</p>
+                    <div class="product-price">Q185.00 <span>Q210.00</span></div>
+                    <button class="add-to-cart" data-id="1" data-name="Base Líquida Matte" data-price="185" data-image="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Producto 2 -->
+            <div class="product-card">
+                <div class="product-badge">-15%</div>
+                <div class="product-image">
+                    <img src="https://cdn.quicksell.co/-NDpi09akedB-KQt0Mot/products/-NDvCsK9DQV2rQUy0AZ1.jpg" alt="Paleta de sombras">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Paleta de Sombras 35T</h3>
+                    <p class="product-brand">Morphe - 35 Colores</p>
+                    <div class="product-price">Q240.00 <span>Q280.00</span></div>
+                    <button class="add-to-cart" data-id="2" data-name="Paleta de Sombras 35T" data-price="240" data-image="https://cdn.quicksell.co/-NDpi09akedB-KQt0Mot/products/-NDvCsK9DQV2rQUy0AZ1.jpg">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Producto 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://i.ebayimg.com/images/g/~X8AAOSwj0deHSYU/s-l1200.jpg" alt="Labial mate">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Labial Matte Liquid</h3>
+                    <p class="product-brand">NYX - Soft Spoken</p>
+                    <div class="product-price">Q95.00</div>
+                    <button class="add-to-cart" data-id="3" data-name="Labial Matte Liquid" data-price="95" data-image="https://i.ebayimg.com/images/g/~X8AAOSwj0deHSYU/s-l1200.jpg">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Producto 4 -->
+            <div class="product-card">
+                <div class="product-badge">Más vendido</div>
+                <div class="product-image">
+                    <img src="https://walmartcr.vtexassets.com/arquivos/ids/515015-800-450?v=638416860786700000&width=800&height=450&aspect=true" alt="Rubor en polvo">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Rubor en Polvo Blush</h3>
+                    <p class="product-brand">L'Oréal - True Match</p>
+                    <div class="product-price">Q130.00</div>
+                    <button class="add-to-cart" data-id="4" data-name="Rubor en Polvo Blush" data-price="130" data-image="https://walmartcr.vtexassets.com/arquivos/ids/515015-800-450?v=638416860786700000&width=800&height=450&aspect=true">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Producto 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://financialfood.es/wp-content/uploads/2021/02/Mascara-pestanas-Maybelline-010221.jpg" alt="Máscara de pestañas">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Máscara de Pestañas</h3>
+                    <p class="product-brand">Maybelline New York</p>
+                    <div class="product-price">Q75.00</div>
+                    <button class="add-to-cart" data-id="5" data-name="Máscara de Pestañas" data-price="75" data-image="https://financialfood.es/wp-content/uploads/2021/02/Mascara-pestanas-Maybelline-010221.jpg">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Producto 6 -->
+            <div class="product-card">
+                <div class="product-badge">Nuevo</div>
+                <div class="product-image">
+                    <img src="https://acdn-us.mitiendanube.com/stores/001/085/626/products/tei-cometica-19-c2e64db2df451b4e0017238321198316-480-0.jpg" alt="Delineador líquido">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Delineador Líquido</h3>
+                    <p class="product-brand">TEI COMSETICA</p>
+                    <div class="product-price">Q160.00</div>
+                    <button class="add-to-cart" data-id="6" data-name="Delineador Líquido" data-price="160" data-image="https://acdn-us.mitiendanube.com/stores/001/085/626/products/tei-cometica-19-c2e64db2df451b4e0017238321198316-480-0.jpg">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Producto 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/71xFTRfg4OL._UF1000,1000_QL80_.jpg" alt="Corrector">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Corrector Crema</h3>
+                    <p class="product-brand">Generic</p>
+                    <div class="product-price">Q210.00</div>
+                    <button class="add-to-cart" data-id="7" data-name="Corrector Crema" data-price="210" data-image="https://m.media-amazon.com/images/I/71xFTRfg4OL._UF1000,1000_QL80_.jpg">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Producto 8 -->
+            <div class="product-card">
+                <div class="product-badge">-20%</div>
+                <div class="product-image">
+                    <img src="https://storage.googleapis.com/static.simplefact.pe/adf8786df0ca413c8df2649ff0943bf4/1706/conversions/11111-normal.jpg" alt="Iluminador">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Iluminador Líquido</h3>
+                    <p class="product-brand">SHEGLAM SAMANTHA</p>
+                    <div class="product-price">Q195.00 <span>Q245.00</span></div>
+                    <button class="add-to-cart" data-id="8" data-name="Iluminador Líquido" data-price="195" data-image="https://storage.googleapis.com/static.simplefact.pe/adf8786df0ca413c8df2649ff0943bf4/1706/conversions/11111-normal.jpg">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Producto 9 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://moonsuncosmetics.com/cdn/shop/files/image_57f9ab06-6d53-42b6-bc9c-cc3e806797aa.png?v=1687206388" alt="Polvo compacto">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Polvo Compacto HD</h3>
+                    <p class="product-brand">MOONSUNCOSMETICS</p>
+                    <div class="product-price">Q250.00</div>
+                    <button class="add-to-cart" data-id="9" data-name="Polvo Compacto HD" data-price="250" data-image="https://moonsuncosmetics.com/cdn/shop/files/image_57f9ab06-6d53-42b6-bc9c-cc3e806797aa.png?v=1687206388">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Producto 10 -->
+            <div class="product-card">
+                <div class="product-badge">Oferta</div>
+                <div class="product-image">
+                    <img src="https://bashiacosmetics.com/cdn/shop/files/DuCare15pcsBASHIA_540x.jpg?v=1712609768" alt="Brochas">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Set de Brochas Profesional</h3>
+                    <p class="product-brand">DUcare - 15 piezas</p>
+                    <div class="product-price">Q320.00 <span>Q380.00</span></div>
+                    <button class="add-to-cart" data-id="10" data-name="Set de Brochas Profesional" data-price="320" data-image="https://bashiacosmetics.com/cdn/shop/files/DuCare15pcsBASHIA_540x.jpg?v=1712609768">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Producto 11 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/81XEMH0z9vL._SX425_.jpg" alt="Gloss labial">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Gloss Labial Brillante</h3>
+                    <p class="product-brand">DENESTUP - Gloss Bomb</p>
+                    <div class="product-price">Q145.00</div>
+                    <button class="add-to-cart" data-id="11" data-name="Gloss Labial Brillante" data-price="145" data-image="https://m.media-amazon.com/images/I/81XEMH0z9vL._SX425_.jpg">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Producto 12 -->
+            <div class="product-card">
+                <div class="product-badge">Nuevo</div>
+                <div class="product-image">
+                    <img src="https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/pdo/pdo22172/y/10.jpg" alt="Fijador de maquillaje">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Fijador de Maquillaje</h3>
+                    <p class="product-brand">Urban Decay - All Nighter</p>
+                    <div class="product-price">Q280.00</div>
+                    <button class="add-to-cart" data-id="12" data-name="Fijador de Maquillaje" data-price="280" data-image="https://cloudinary.images-iherb.com/image/upload/f_auto,q_auto:eco/images/pdo/pdo22172/y/10.jpg">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <h2 class="section-title" id="ofertas">Ofertas Especiales</h2>
+        <div class="products">
+            <!-- Oferta 1 -->
+            <div class="product-card">
+                <div class="product-badge">50% OFF</div>
+                <div class="product-image">
+                    <img src="https://images-cdn.ubuy.co.in/634fda5d89174a4122304c15-fantasyday-all-in-one-makeup-kit.jpg" alt="Kit maquillaje">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Kit Completo de Maquillaje</h3>
+                    <p class="product-brand">FantasyDay</p>
+                    <div class="product-price">Q450.00 <span>Q900.00</span></div>
+                    <button class="add-to-cart" data-id="13" data-name="Kit Completo de Maquillaje" data-price="450" data-image="https://images-cdn.ubuy.co.in/634fda5d89174a4122304c15-fantasyday-all-in-one-makeup-kit.jpg">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Oferta 2 -->
+            <div class="product-card">
+                <div class="product-badge">2x1</div>
+                <div class="product-image">
+                    <img src="https://www.amorus.com.mx/wp-content/uploads/2024/11/Labial-mate.png" alt="Labiales">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Promo 2 Labiales Matte</h3>
+                    <p class="product-brand">AMOR US</p>
+                    <div class="product-price">Q150.00 <span>Q190.00</span></div>
+                    <button class="add-to-cart" data-id="14" data-name="Promo 2 Labiales Matte" data-price="150" data-image="https://www.amorus.com.mx/wp-content/uploads/2024/11/Labial-mate.png">Añadir al carrito</button>
+                </div>
+            </div>
+            
+            <!-- Oferta 3 -->
+            <div class="product-card">
+                <div class="product-badge">-30%</div>
+                <div class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/71UX4CmUYLL._SL1500_.jpg" alt="Paleta sombras">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Paleta + Brochas</h3>
+                    <p class="product-brand">UCANBE - Set especial</p>
+                    <div class="product-price">Q350.00 <span>Q500.00</span></div>
+                    <button class="add-to-cart" data-id="15" data-name="Paleta + Brochas" data-price="350" data-image="https://m.media-amazon.com/images/I/71UX4CmUYLL._SL1500_.jpg">Añadir al carrito</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <h2>Suscríbete a Nuestro Boletín</h2>
+            <p>Recibe ofertas exclusivas, descuentos y consejos de maquillaje directamente en tu correo.</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <button type="submit">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Glamour Beauty</h3>
+                    <p>Tu tienda de maquillaje profesional en Guatemala con los mejores precios en quetzales.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#ofertas">Ofertas</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                        <li><a href="#">Términos y condiciones</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Categorías</h3>
+                    <ul>
+                        <li><a href="#">Rostro</a></li>
+                        <li><a href="#">Ojos</a></li>
+                        <li><a href="#">Labios</a></li>
+                        <li><a href="#">Brochas</a></li>
+                        <li><a href="#">Kits</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Ciudad de Guatemala, Zona 10</li>
+                        <li><i class="fas fa-phone"></i> +502 1234 5678</li>
+                        <li><i class="fas fa-envelope"></i> info@glamourbeauty.com</li>
+                        <li><i class="fas fa-clock"></i> Lunes a Viernes: 9am - 6pm</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Glamour Beauty. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables globales
+            let cart = [];
+            const cartModal = document.getElementById('cart-modal');
+            const overlay = document.getElementById('overlay');
+            const openCartBtn = document.getElementById('open-cart');
+            const closeCartBtn = document.getElementById('close-cart');
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartSummary = document.getElementById('cart-summary');
+            const cartTotalElement = document.getElementById('cart-total');
+            const cartCountElement = document.querySelector('.cart-count');
+            const newsletterForm = document.getElementById('newsletter-form');
+            
+            // Abrir carrito
+            openCartBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                cartModal.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            // Cerrar carrito
+            closeCartBtn.addEventListener('click', function() {
+                cartModal.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Cerrar al hacer clic en el overlay
+            overlay.addEventListener('click', function() {
+                cartModal.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Añadir productos al carrito
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    const image = this.getAttribute('data-image');
+                    
+                    // Verificar si el producto ya está en el carrito
+                    const existingItem = cart.find(item => item.id === id);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            id,
+                            name,
+                            price,
+                            image,
+                            quantity: 1
+                        });
+                    }
+                    
+                    updateCart();
+                    
+                    // Feedback visual
+                    this.textContent = '¡Añadido!';
+                    this.style.backgroundColor = 'var(--success-color)';
+                    
+                    setTimeout(() => {
+                        this.textContent = 'Añadir al carrito';
+                        this.style.backgroundColor = 'var(--primary-color)';
+                    }, 1000);
+                });
+            });
+            
+            // Actualizar el carrito
+            function updateCart() {
+                // Actualizar contador
+                const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+                cartCountElement.textContent = totalItems;
+                
+                // Actualizar lista de productos
+                if (cart.length === 0) {
+                    cartItemsContainer.innerHTML = `
+                        <div class="empty-cart">
+                            <i class="fas fa-shopping-cart" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                            <p>Tu carrito está vacío</p>
+                        </div>
+                    `;
+                    cartSummary.style.display = 'none';
+                } else {
+                    cartItemsContainer.innerHTML = '';
+                    cart.forEach(item => {
+                        const cartItemElement = document.createElement('div');
+                        cartItemElement.className = 'cart-item';
+                        cartItemElement.innerHTML = `
+                            <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                            <div class="cart-item-details">
+                                <h4 class="cart-item-title">${item.name}</h4>
+                                <p class="cart-item-price">Q${item.price.toFixed(2)}</p>
+                                <div class="cart-item-quantity">
+                                    <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                                    <span class="quantity">${item.quantity}</span>
+                                    <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                                </div>
+                                <button class="remove-item" data-id="${item.id}">Eliminar</button>
+                            </div>
+                        `;
+                        cartItemsContainer.appendChild(cartItemElement);
+                    });
+                    
+                    // Mostrar resumen
+                    cartSummary.style.display = 'block';
+                    
+                    // Calcular total
+                    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                    cartTotalElement.textContent = `Q${total.toFixed(2)}`;
+                }
+                
+                // Agregar event listeners a los botones de cantidad y eliminar
+                document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        const item = cart.find(item => item.id === id);
+                        
+                        if (item.quantity > 1) {
+                            item.quantity -= 1;
+                        } else {
+                            cart = cart.filter(item => item.id !== id);
+                        }
+                        
+                        updateCart();
+                    });
+                });
+                
+                document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        const item = cart.find(item => item.id === id);
+                        item.quantity += 1;
+                        updateCart();
+                    });
+                });
+                
+                document.querySelectorAll('.remove-item').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        cart = cart.filter(item => item.id !== id);
+                        updateCart();
+                    });
+                });
+            }
+            
+            // Formulario de newsletter
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const emailInput = this.querySelector('input');
+                alert(`¡Gracias por suscribirte con el correo ${emailInput.value}! Pronto recibirás nuestras mejores ofertas.`);
+                emailInput.value = '';
+            });
+            
+            // Botón de checkout
+            document.querySelector('.checkout-btn')?.addEventListener('click', function() {
+                if (cart.length > 0) {
+                    alert(`¡Gracias por tu compra! Total: ${cartTotalElement.textContent}\nRedirigiendo a pasarela de pago...`);
+                    cart = [];
+                    updateCart();
+                    cartModal.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
